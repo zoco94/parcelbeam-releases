@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParcelBeam — beam files across your local network</title>
+<meta name="description" content="ParcelBeam sends files between your devices over your own network. No cloud, no accounts, no size limits. Works with LocalSend on every platform.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── The dispatch terminal: warehouse at night, kraft parcels, one green beam ── */
+  :root {
+    --beam:       #3ddc84;
+    --beam-dark:  #22b869;
+    --beam-soft:  rgba(61,220,132,.13);
+    --kraft:      #c99b62;
+    --kraft-dim:  rgba(201,155,98,.16);
+    --tape:       #efe6d8;
+    --bg:         #0b1014;
+    --bg2:        #131b21;
+    --surface:    #121a20;
+    --border:     rgba(233,222,205,.12);
+    --text:       #f2ede4;
+    --text2:      #9aa8a5;
+    --text3:      #6b7a78;
+    --label: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--mono);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  /* corrugated cardboard ribbing + the beam glow from above */
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 5px, rgba(201,155,98,.03) 5px 6px),
+      radial-gradient(110% 60% at 50% -5%, var(--beam-soft) 0%, transparent 62%);
+  }
+  body > * { position: relative; z-index: 1; }
+
+  a { color: var(--beam); }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Top strip: like the printed edge of a shipping label ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  header::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--beam) 20%, transparent 45%, var(--kraft) 70%, transparent 95%);
+    opacity: .6;
+  }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .wordmark {
+    font-family: var(--label);
+    font-weight: 700; font-size: 24px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text); text-decoration: none;
+  }
+  .wordmark b { color: var(--beam); font-weight: 700; }
+  .topbar nav { display: flex; gap: 22px; }
+  .topbar nav a {
+    font-family: var(--label); font-weight: 600; font-size: 15px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text2); text-decoration: none;
+  }
+  .topbar nav a:hover { color: var(--beam); }
+
+  /* ── Hero ── */
+  .hero { padding: 84px 0 30px; text-align: center; }
+  .hero .stencil {
+    font-family: var(--label);
+    font-weight: 700;
+    font-size: clamp(46px, 9vw, 92px);
+    line-height: .95;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    animation: rise .6s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .hero .stencil .beamword {
+    color: var(--beam);
+    text-shadow: 0 0 34px rgba(61,220,132,.45);
+  }
+  .hero .sub {
+    margin: 22px auto 0; max-width: 560px;
+    color: var(--text2); font-size: 15px;
+    animation: rise .6s .12s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .hero .sub em { color: var(--kraft); font-style: normal; }
+
+  /* the scanner beam that sweeps under the title */
+  .beamline {
+    height: 2px; max-width: 520px; margin: 34px auto 0;
+    background: linear-gradient(90deg, transparent, var(--beam), transparent);
+    position: relative; overflow: visible;
+    animation: rise .6s .2s both;
+  }
+  .beamline::after {
+    content: ""; position: absolute; top: -3px; width: 60px; height: 8px;
+    border-radius: 8px;
+    background: var(--beam); filter: blur(6px); opacity: .9;
+    animation: sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes sweep { 0%,100% { left: 4%; } 50% { left: calc(96% - 60px); } }
+  @keyframes rise  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  /* ── The download label: a kraft shipping label ── */
+  .label-card {
+    margin: 56px auto 0; max-width: 640px;
+    background: var(--surface);
+    border: 1px dashed var(--kraft);
+    border-radius: 10px;
+    padding: 30px 30px 26px;
+    position: relative;
+    box-shadow: 0 18px 50px rgba(0,0,0,.5);
+    animation: rise .6s .3s both;
+  }
+  /* strip of packing tape across the top edge */
+  .label-card::before {
+    content: ""; position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-1.6deg);
+    width: 150px; height: 24px;
+    background: linear-gradient(180deg, rgba(239,230,216,.16), rgba(239,230,216,.08));
+    border: 1px solid rgba(239,230,216,.18);
+    border-radius: 2px;
+  }
+  .label-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px; margin-bottom: 20px;
+    font-family: var(--label); text-transform: uppercase;
+  }
+  .label-head .to { font-size: 18px; font-weight: 600; letter-spacing: 2.5px; color: var(--text2); }
+  .label-head .to b { color: var(--text); }
+  .label-head .ver {
+    font-family: var(--mono); font-size: 12px; color: var(--kraft);
+    border: 1px solid var(--kraft-dim); background: var(--kraft-dim);
+    padding: 2px 9px; border-radius: 3px; letter-spacing: 1px;
+  }
+  .bigbtn {
+    display: block; width: 100%;
+    font-family: var(--label); font-weight: 700; font-size: 22px;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    background: var(--beam); color: #06110a;
+    border: none; border-radius: 8px;
+    padding: 17px 20px; cursor: pointer; text-decoration: none; text-align: center;
+    transition: transform .15s cubic-bezier(.2,.7,.3,1), box-shadow .15s, background .15s;
+    box-shadow: 0 6px 24px rgba(61,220,132,.25);
+  }
+  .bigbtn:hover { background: var(--beam-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(61,220,132,.35); }
+  .bigbtn small { display: block; font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .5px; text-transform: none; opacity: .75; margin-top: 3px; }
+  .alt-note { text-align: center; margin-top: 14px; font-size: 12px; color: var(--text3); }
+  .alt-note a { color: var(--text2); }
+
+  /* barcode strip, because every parcel has one */
+  .barcode {
+    height: 34px; margin-top: 22px; opacity: .5;
+    background: repeating-linear-gradient(90deg,
+      var(--text) 0 2px, transparent 2px 5px, var(--text) 5px 6px, transparent 6px 11px,
+      var(--text) 11px 14px, transparent 14px 17px, var(--text) 17px 18px, transparent 18px 24px);
+  }
+  .barcode-num { text-align: center; font-size: 10px; letter-spacing: 6px; color: var(--text3); margin-top: 6px; }
+
+  /* ── Platform grid ── */
+  .section-title {
+    font-family: var(--label); font-weight: 600; font-size: 16px;
+    letter-spacing: 3.5px; text-transform: uppercase; color: var(--text2);
+    display: flex; align-items: center; gap: 16px;
+    margin: 74px 0 22px;
+  }
+  .section-title::after { content: ""; flex: 1; height: 1px; background: repeating-linear-gradient(90deg, var(--border) 0 8px, transparent 8px 14px); }
+
+  .plat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 720px) { .plat-grid { grid-template-columns: 1fr; } }
+  .plat {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px;
+    transition: transform .15s, border-color .15s;
+  }
+  .plat:hover { transform: translateY(-3px); border-color: var(--kraft); }
+  .plat h3 {
+    font-family: var(--label); font-weight: 600; font-size: 19px;
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .plat ul { list-style: none; }
+  .plat li { margin-bottom: 7px; font-size: 13px; }
+  .plat a { text-decoration: none; border-bottom: 1px dashed rgba(61,220,132,.4); }
+  .plat a:hover { border-bottom-style: solid; }
+  .plat .hint { color: var(--text3); font-size: 11px; margin-top: 10px; }
+
+  /* ── Features: stamped crate markings ── */
+  .stamps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 720px) { .stamps { grid-template-columns: 1fr 1fr; } }
+  .stamp {
+    border: 2px solid var(--kraft-dim); border-radius: 8px;
+    padding: 18px 16px;
+    transform: rotate(0deg);
+    transition: transform .15s, border-color .15s;
+  }
+  .stamp:nth-child(odd):hover  { transform: rotate(-1.2deg); border-color: var(--kraft); }
+  .stamp:nth-child(even):hover { transform: rotate(1.2deg);  border-color: var(--kraft); }
+  .stamp h4 {
+    font-family: var(--label); font-weight: 700; font-size: 17px;
+    letter-spacing: 2.5px; text-transform: uppercase; color: var(--kraft);
+    margin-bottom: 6px;
+  }
+  .stamp p { font-size: 12.5px; color: var(--text2); }
+  .stamp p b { color: var(--text); font-weight: 500; }
+
+  /* ── Interop note ── */
+  .interop {
+    margin-top: 74px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px 26px;
+    display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+  }
+  .interop .big { font-size: 34px; }
+  .interop p { flex: 1; min-width: 260px; font-size: 13.5px; color: var(--text2); }
+  .interop p b { color: var(--text); }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 84px; border-top: 1px solid var(--border);
+    padding: 30px 0 44px;
+    display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+    font-size: 12px; color: var(--text3);
+  }
+  footer .links { display: flex; gap: 20px; }
+  footer a { color: var(--text2); text-decoration: none; border-bottom: 1px dashed var(--border); }
+  footer a:hover { color: var(--beam); }
+  .coffee {
+    display: inline-block; margin-top: 2px;
+    font-family: var(--label); font-weight: 600; font-size: 14px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--kraft) !important; border: 1px dashed var(--kraft) !important;
+    border-radius: 6px; padding: 7px 14px;
+  }
+  .coffee:hover { background: var(--kraft-dim); color: var(--tape) !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <a class="wordmark" href="#">Parcel<b>Beam</b></a>
+    <nav>
+      <a href="#downloads">Downloads</a>
+      <a href="https://buymeacoffee.com/parcelbeam">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <h1 class="stencil">Beam files across<br>your <span class="beamword">own network</span></h1>
+    <p class="sub">ParcelBeam moves files between your devices the short way — straight
+      across the room. <em>No cloud. No accounts. No size limits.</em> Nothing ever
+      leaves your network.</p>
+    <div class="beamline" aria-hidden="true"></div>
+
+    <div class="label-card" id="downloads">
+      <div class="label-head">
+        <span class="to">Deliver to: <b id="os-name">this device</b></span>
+        <span class="ver" id="version">v—</span>
+      </div>
+      <a class="bigbtn" id="primary-dl" href="https://github.com/zoco94/parcelbeam-releases/releases/latest">
+        Download ParcelBeam
+        <small id="primary-hint">detecting your platform…</small>
+      </a>
+      <p class="alt-note">Free forever · <a href="#all-platforms">all platforms &amp; formats below</a></p>
+      <div class="barcode" aria-hidden="true"></div>
+      <div class="barcode-num" id="barcode-num">PB·LOCAL·ONLY</div>
+    </div>
+  </section>
+
+  <h2 class="section-title" id="all-platforms">Every platform</h2>
+  <div class="plat-grid">
+    <div class="plat">
+      <h3>🪟 Windows</h3>
+      <ul id="win-links"><li>Loading…</li></ul>
+      <p class="hint">Installer adds right-click “Share with ParcelBeam” + Send&nbsp;to.</p>
+    </div>
+    <div class="plat">
+      <h3>🍎 macOS</h3>
+      <ul id="mac-links"><li>Loading…</li></ul>
+      <p class="hint">Universal — Apple Silicon &amp; Intel. Finder Quick Action included.</p>
+    </div>
+    <div class="plat">
+      <h3>🐧 Linux</h3>
+      <ul id="linux-links"><li>Loading…</li></ul>
+      <p class="hint">AppImage or deb · GNOME &amp; KDE right-click integration script.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">Stamped on every crate</h2>
+  <div class="stamps">
+    <div class="stamp"><h4>Verified</h4><p>Every file carries a <b>sha256 checksum</b>, checked on arrival. A corrupted transfer is rejected, never silently saved.</p></div>
+    <div class="stamp"><h4>PIN lock</h4><p>Require a PIN before anyone can send to you. Ten misses and the sender is <b>locked out</b>.</p></div>
+    <div class="stamp"><h4>Share link</h4><p>Serve files to <b>any browser</b> on your network — scan a QR with a phone, no app needed.</p></div>
+    <div class="stamp"><h4>Encrypted</h4><p>HTTPS transfers with <b>certificate pinning</b> against each device’s announced identity.</p></div>
+    <div class="stamp"><h4>No telemetry</h4><p>Zero analytics, zero tracking. Its only internet call is checking this page’s <b>releases feed</b> for updates.</p></div>
+    <div class="stamp"><h4>Tray-ready</h4><p>Lives in your tray or menu bar, <b>receives while you work</b>, and pops a notification when a parcel lands.</p></div>
+  </div>
+
+  <div class="interop">
+    <span class="big">📦↔📱</span>
+    <p><b>Speaks LocalSend, fluently.</b> ParcelBeam implements LocalSend Protocol v2.1,
+      so it beams to and from the free LocalSend app on iOS and Android — and any other
+      compatible client. Your phone is already covered.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;width:100%">
+    <div>
+      © 2026 Adrian Nicolaysen · ParcelBeam is an independent app, not affiliated with the LocalSend project.<br>
+      <a class="coffee" href="https://buymeacoffee.com/parcelbeam">☕ Buy me a coffee</a>
+    </div>
+    <div class="links">
+      <a href="https://github.com/zoco94/parcelbeam-releases/releases">All releases</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(async () => {
+  // Detect platform for the big button
+  const ua = navigator.userAgent;
+  const os = /Windows/i.test(ua) ? 'win' : /Mac/i.test(ua) ? 'mac' : /Linux/i.test(ua) ? 'linux' : 'other';
+  const osNames = { win: 'Windows', mac: 'macOS', linux: 'Linux', other: 'this device' };
+  document.getElementById('os-name').textContent = osNames[os];
+
+  const fmtMB = b => `${(b / 1048576).toFixed(0)} MB`;
+  const li = (a, label) => `<li><a href="${a.browser_download_url}">${label}</a> · ${fmtMB(a.size)}</li>`;
+
+  let rel = null;
+  try {
+    const r = await fetch('https://api.github.com/repos/zoco94/parcelbeam-releases/releases/latest');
+    if (r.ok) rel = await r.json();
+  } catch (_) {}
+
+  const hint = document.getElementById('primary-hint');
+  if (!rel || !rel.assets) {           // API rate-limited: buttons still work via /latest links
+    hint.textContent = 'grab it from the releases page';
+    ['win-links','mac-links','linux-links'].forEach(id =>
+      document.getElementById(id).innerHTML =
+        '<li><a href="https://github.com/zoco94/parcelbeam-releases/releases/latest">See latest release</a></li>');
+    return;
+  }
+
+  const v = rel.tag_name || '';
+  document.getElementById('version').textContent = v;
+  document.getElementById('barcode-num').textContent = `PB·${v.replace(/\./g,'·').toUpperCase()}·LOCAL·ONLY`;
+
+  const find = re => rel.assets.find(a => re.test(a.name));
+  const exe    = find(/Setup.*\.exe$/i);
+  const winzip = find(/win\.zip$/i);
+  const dmg    = find(/\.dmg$/i);
+  const aiX64  = find(/^ParcelBeam-[\d.]+\.AppImage$/i);
+  const aiArm  = find(/arm64\.AppImage$/i);
+  const debX64 = find(/amd64\.deb$/i);
+  const debArm = find(/arm64\.deb$/i);
+
+  document.getElementById('win-links').innerHTML =
+    (exe    ? li(exe, 'Installer (.exe)') : '') +
+    (winzip ? li(winzip, 'Portable (.zip)') : '') || '<li>—</li>';
+  document.getElementById('mac-links').innerHTML =
+    (dmg ? li(dmg, 'Disk image (.dmg)') : '<li>—</li>');
+  document.getElementById('linux-links').innerHTML =
+    (aiX64  ? li(aiX64,  'AppImage · x64') : '') +
+    (debX64 ? li(debX64, 'deb · x64') : '') +
+    (aiArm  ? li(aiArm,  'AppImage · arm64') : '') +
+    (debArm ? li(debArm, 'deb · arm64') : '') || '<li>—</li>';
+
+  const primary = { win: exe, mac: dmg, linux: aiX64 }[os];
+  const btn = document.getElementById('primary-dl');
+  if (primary) {
+    btn.href = primary.browser_download_url;
+    hint.textContent = `${primary.name} · ${fmtMB(primary.size)} · ${v}`;
+  } else {
+    hint.textContent = 'pick your platform below';
+    btn.href = '#all-platforms';
+  }
+})();
+</script>
+
+</body>
+</html>
