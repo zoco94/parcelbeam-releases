@@ -1,8 +1,21 @@
 # 📦 ParcelBeam
 
-**Beam files across your own network.** No cloud, no accounts, no size limits,
-no tracking — files travel directly between your devices and never leave your
-network.
+**Beam files across your own network** — between **macOS, Windows, Linux,
+Android and iPhone**, in every direction. No cloud, no accounts, no size
+limits, no tracking: files travel directly between your devices and never
+leave your network.
+
+| From ⟶ To | macOS | Windows | Linux | Android | iPhone |
+|---|:--:|:--:|:--:|:--:|:--:|
+| **macOS** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Windows** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Linux** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Android** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **iPhone** | ✓ | ✓ | ✓ | ✓ | ✓ |
+
+Desktop platforms run the ParcelBeam app; phones run ParcelBeam for iPhone or
+the free [LocalSend](https://localsend.org) app — all of them speak the same
+protocol, so everything talks to everything.
 
 ### [⬇ Download for macOS, Windows or Linux](https://zoco94.github.io/parcelbeam-releases/)
 

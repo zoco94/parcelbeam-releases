@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ParcelBeam — beam files across your local network</title>
-<meta name="description" content="ParcelBeam sends files between your devices over your own network. No cloud, no accounts, no size limits. Works with LocalSend on every platform.">
+<meta name="description" content="Send files between macOS, Windows, Linux, Android and iPhone over your own Wi-Fi. No cloud, no accounts, no size limits. Compatible with LocalSend.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,6 +291,18 @@
     scroll-snap-align: start;
     background: var(--bg);
   }
+
+  .platforms {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    margin: 20px auto 0; max-width: 620px;
+  }
+  .platforms span {
+    font-family: var(--label); font-weight: 600; font-size: 14px;
+    letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--text2);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 5px 13px; background: var(--surface);
+  }
 </style>
 </head>
 <body>
@@ -312,6 +324,10 @@
     <p class="sub">ParcelBeam moves files between your devices the short way — straight
       across the room. <em>No cloud. No accounts. No size limits.</em> Nothing ever
       leaves your network.</p>
+    <p class="platforms">
+      <span>🍎 macOS</span><span>🪟 Windows</span><span>🐧 Linux</span>
+      <span>🤖 Android</span><span>📱 iPhone</span>
+    </p>
     <div class="beamline" aria-hidden="true"></div>
 
     <div class="label-card" id="downloads">
