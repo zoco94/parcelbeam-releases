@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParcelBeam — Privacy Policy</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --beam:#3ddc84; --kraft:#c99b62; --bg:#0b1014; --surface:#121a20;
+    --border:rgba(233,222,205,.12); --text:#f2ede4; --text2:#9aa8a5; --text3:#6b7a78;
+    --label:"Barlow Condensed","Arial Narrow",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--mono);background:var(--bg);color:var(--text);font-size:15px;line-height:1.65}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(201,155,98,.03) 5px 6px),
+      radial-gradient(110% 60% at 50% -5%,rgba(61,220,132,.13) 0%,transparent 62%)}
+  body>*{position:relative;z-index:1}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--border);padding:18px 0;margin-bottom:44px}
+  .wordmark{font-family:var(--label);font-weight:700;font-size:24px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--text);text-decoration:none}
+  .wordmark b{color:var(--beam)}
+  h1{font-family:var(--label);font-weight:700;font-size:clamp(34px,7vw,54px);
+    letter-spacing:2px;text-transform:uppercase;line-height:1;margin-bottom:10px}
+  .updated{color:var(--text3);font-size:13px;margin-bottom:34px}
+  h2{font-family:var(--label);font-weight:600;font-size:19px;letter-spacing:2.4px;
+    text-transform:uppercase;color:var(--beam);margin:34px 0 10px}
+  p{margin-bottom:14px;color:var(--text2)}
+  p strong{color:var(--text)}
+  ul{margin:0 0 14px 20px;color:var(--text2)}
+  li{margin-bottom:7px}
+  .callout{background:var(--surface);border:1px dashed var(--kraft);border-radius:10px;
+    padding:20px 22px;margin:26px 0}
+  .callout p{margin:0;color:var(--text)}
+  a{color:var(--beam)}
+  footer{border-top:1px solid var(--border);margin-top:54px;padding:24px 0 44px;
+    color:var(--text3);font-size:12px}
+  footer a{color:var(--text2)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap"><a class="wordmark" href="./">Parcel<b>Beam</b></a></div>
+</header>
+
+<main class="wrap">
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated 4 August 2026 · applies to ParcelBeam for iOS, macOS, Windows and Linux</p>
+
+  <div class="callout">
+    <p><strong>The short version: ParcelBeam collects nothing.</strong> No accounts, no
+    analytics, no tracking, no advertising, no servers of ours. Your files travel
+    directly between your own devices over your own local network.</p>
+  </div>
+
+  <h2>What we collect</h2>
+  <p><strong>Nothing.</strong> ParcelBeam has no user accounts, no sign-in, no
+  analytics or crash-reporting SDK, no advertising identifiers, and no backend
+  service that receives your data. We — the developer — never see your files,
+  filenames, device names, IP addresses, or usage of the app.</p>
+
+  <h2>Where your files go</h2>
+  <p>Files transfer <strong>directly from one device to another</strong> across your
+  local network (Wi-Fi or Ethernet), using the open LocalSend protocol. They are
+  not uploaded to any cloud, relay, or intermediary server. If the two devices
+  cannot see each other on the same network, the transfer simply does not happen.</p>
+  <p>Transfers between ParcelBeam devices are encrypted in transit (HTTPS), and
+  each device verifies the other's certificate fingerprint against the identity it
+  announced.</p>
+
+  <h2>What stays on your device</h2>
+  <p>ParcelBeam stores a small amount of data locally, on your device only, which
+  is never transmitted anywhere:</p>
+  <ul>
+    <li>Your chosen device name, save folder, PIN and preferences</li>
+    <li>A transfer history (who, what, when) limited to recent transfers</li>
+    <li>A cryptographic identity so other devices recognise yours between launches</li>
+    <li>Files you have received</li>
+  </ul>
+  <p>Deleting the app removes all of it.</p>
+
+  <h2>Permissions we ask for</h2>
+  <ul>
+    <li><strong>Local network</strong> — required to find nearby devices and transfer
+      files. Without it the app cannot function.</li>
+    <li><strong>Photos</strong> — only when you choose photos to send, or opt in to
+      saving received photos to your library. ParcelBeam does not browse or read
+      your library otherwise.</li>
+    <li><strong>Files</strong> — only the files you explicitly pick or receive.</li>
+  </ul>
+
+  <h2>The one internet connection</h2>
+  <p>The desktop app checks GitHub once after launch, and every few hours, to see
+  whether a newer version exists. That request is anonymous and read-only: it sends
+  no identifying information beyond what any web request necessarily includes (your
+  IP address, seen by GitHub, not by us). It can be ignored entirely — the app works
+  fine offline. The iOS app makes no such request.</p>
+
+  <h2>Children</h2>
+  <p>ParcelBeam is a general-purpose utility, collects no data from anyone, and is
+  not directed at children.</p>
+
+  <h2>Third parties</h2>
+  <p>There are none. No data is shared, sold, or disclosed, because none is
+  collected. ParcelBeam is compatible with the open-source LocalSend protocol but is
+  an independent app, not affiliated with the LocalSend project.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy ever changes, the updated version appears on this page with a
+  new date. Since the app collects nothing, we do not expect meaningful changes.</p>
+
+  <h2>Contact</h2>
+  <p>Questions: <a href="mailto:adriannicolaysen@gmail.com">adriannicolaysen@gmail.com</a></p>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Adrian Nicolaysen · <a href="./">ParcelBeam</a> ·
+    <a href="https://github.com/zoco94/parcelbeam-releases/releases">Downloads</a>
+  </div>
+</footer>
+
+</body>
+</html>
