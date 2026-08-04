@@ -278,6 +278,19 @@
     content: "▸"; position: absolute; left: 4px; color: var(--beam);
   }
   .iphone-list b { color: var(--text); font-weight: 500; }
+
+  .shots {
+    display: flex; gap: 12px; margin-top: 20px;
+    overflow-x: auto; padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+  }
+  .shots img {
+    width: 176px; flex: 0 0 auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    scroll-snap-align: start;
+    background: var(--bg);
+  }
 </style>
 </head>
 <body>
@@ -371,6 +384,12 @@
         library, or jump into the Files app.</li>
       <li><b>Favourite devices</b> so your Mac is preselected the moment it appears.</li>
     </ul>
+    <div class="shots">
+      <img src="screenshots/1-beam-armed.png" alt="Tap the beam to pack, tap again to send" loading="lazy">
+      <img src="screenshots/2-beam-idle.png"  alt="Standing by, devices in range" loading="lazy">
+      <img src="screenshots/3-history.png"    alt="History with verified transfers" loading="lazy">
+      <img src="screenshots/4-settings.png"   alt="PIN, quick save and feedback settings" loading="lazy">
+    </div>
   </div>
 
 </main>

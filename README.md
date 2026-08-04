@@ -25,6 +25,13 @@ ParcelBeam app is built for it:
 - **Favourite your devices** so your Mac is preselected the moment it appears.
 - Same dark dispatch-terminal design as the desktop app.
 
+<p align="center">
+  <img src="screenshots/1-beam-armed.png" width="215" alt="One control: tap the beam to pack, tap again to send">
+  <img src="screenshots/2-beam-idle.png"  width="215" alt="Standing by, devices in range along the bottom">
+  <img src="screenshots/3-history.png"    width="215" alt="History with verified transfers and file previews">
+  <img src="screenshots/4-settings.png"   width="215" alt="PIN, quick save, photo library and feedback settings">
+</p>
+
 *Not yet publicly downloadable — this section will link to the App Store when
 it ships.*
 
