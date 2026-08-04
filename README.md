@@ -10,6 +10,24 @@ network.
 
 ---
 
+## ParcelBeam for iPhone — coming soon
+
+A native iOS companion is in TestFlight now and heading for the App Store. Any
+LocalSend-compatible app will move files to and from your desktop, but the
+ParcelBeam app is built for it:
+
+- **Send from anywhere** — "ParcelBeam" in the iOS share sheet, straight from
+  Photos, Files or Safari.
+- **Receives too**, not just sends, with an accept prompt and optional PIN.
+- **Verified transfers** — checksums are checked on the phone as well.
+- **A real history** — tap any received file to preview it, save photos to your
+  library, or jump to it in the Files app.
+- **Favourite your devices** so your Mac is preselected the moment it appears.
+- Same dark dispatch-terminal design as the desktop app.
+
+*Not yet publicly downloadable — this section will link to the App Store when
+it ships.*
+
 ## Works with LocalSend
 
 ParcelBeam speaks **LocalSend Protocol v2.1**, so it transfers to and from the

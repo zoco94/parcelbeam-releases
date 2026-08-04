@@ -250,6 +250,34 @@
     border-radius: 6px; padding: 7px 14px;
   }
   .coffee:hover { background: var(--kraft-dim); color: var(--tape) !important; }
+
+  /* ── iPhone app card ────────────────────────────────────────────── */
+  .iphone-card {
+    background: var(--surface);
+    border: 1px dashed var(--kraft);
+    border-radius: 10px;
+    padding: 24px 26px;
+  }
+  .iphone-head { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .iphone-emoji { font-size: 38px; line-height: 1; }
+  .iphone-head h3 {
+    font-family: var(--label); font-weight: 700; font-size: 22px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--text);
+  }
+  .iphone-sub {
+    font-size: 12px; color: var(--kraft); letter-spacing: 1px;
+    text-transform: uppercase; font-family: var(--label); font-weight: 600;
+  }
+  .iphone-body { font-size: 13.5px; color: var(--text2); margin-bottom: 12px; }
+  .iphone-list { list-style: none; }
+  .iphone-list li {
+    font-size: 13px; color: var(--text2); margin-bottom: 8px; padding-left: 20px;
+    position: relative;
+  }
+  .iphone-list li::before {
+    content: "▸"; position: absolute; left: 4px; color: var(--beam);
+  }
+  .iphone-list b { color: var(--text); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -321,7 +349,28 @@
     <span class="big">📦↔📱</span>
     <p><b>Speaks LocalSend, fluently.</b> ParcelBeam implements LocalSend Protocol v2.1,
       so it beams to and from the free LocalSend app on iOS and Android — and any other
-      compatible client. Your phone is already covered.</p>
+      compatible client. Your phone is already covered today.</p>
+  </div>
+
+  <h2 class="section-title">And an iPhone app of our own</h2>
+  <div class="iphone-card">
+    <div class="iphone-head">
+      <span class="iphone-emoji">📱</span>
+      <div>
+        <h3>ParcelBeam for iPhone</h3>
+        <p class="iphone-sub">In TestFlight now · App Store soon</p>
+      </div>
+    </div>
+    <p class="iphone-body">Any LocalSend app will talk to your desktop. The ParcelBeam
+      app is built for it — and does more:</p>
+    <ul class="iphone-list">
+      <li><b>Share sheet</b> — beam straight from Photos, Files or Safari.</li>
+      <li><b>Sends and receives</b>, with an accept prompt and optional PIN.</li>
+      <li><b>Checksum-verified</b> on the phone, not just the desktop.</li>
+      <li><b>A history that does something</b> — preview any file, save photos to your
+        library, or jump into the Files app.</li>
+      <li><b>Favourite devices</b> so your Mac is preselected the moment it appears.</li>
+    </ul>
   </div>
 
 </main>
