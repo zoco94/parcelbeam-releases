@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to send files from iPhone to Windows, Mac or Linux — the options compared</title>
+<meta name="description" content="AirDrop only works Apple-to-Apple. Phone Link needs a Microsoft account. Nearby Sharing ignores phones entirely. An honest comparison of every way to move files between your phone and your computer in 2026 — including when you do not need ParcelBeam at all.">
+<link rel="canonical" href="https://zoco94.github.io/parcelbeam-releases/compare.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --beam:#3ddc84; --kraft:#c99b62; --kraft-dim:rgba(201,155,98,.16);
+    --tape:#efe6d8; --bg:#0b1014; --surface:#121a20;
+    --border:rgba(233,222,205,.12); --text:#f2ede4; --text2:#9aa8a5; --text3:#6b7a78;
+    --label:"Barlow Condensed","Arial Narrow",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--mono);background:var(--bg);color:var(--text);font-size:15px;line-height:1.65}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(201,155,98,.03) 5px 6px),
+      radial-gradient(110% 60% at 50% -5%,rgba(61,220,132,.13) 0%,transparent 62%)}
+  body>*{position:relative;z-index:1}
+  a{color:var(--beam)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--border);padding:18px 0;margin-bottom:52px}
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+  .wordmark{font-family:var(--label);font-weight:700;font-size:24px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--text);text-decoration:none}
+  .wordmark b{color:var(--beam)}
+  nav a{color:var(--text2);text-decoration:none;font-size:13px;margin-left:20px}
+  nav a:hover{color:var(--beam)}
+  h1{font-family:var(--label);font-weight:700;font-size:clamp(30px,5.4vw,46px);
+    letter-spacing:1.5px;text-transform:uppercase;line-height:1.05;margin-bottom:14px}
+  h2{font-family:var(--label);font-weight:700;font-size:clamp(21px,3.4vw,28px);
+    letter-spacing:1.6px;text-transform:uppercase;margin:52px 0 12px;color:var(--tape)}
+  h3{font-family:var(--label);font-weight:600;font-size:18px;letter-spacing:1.2px;
+    text-transform:uppercase;margin:30px 0 8px;color:var(--kraft)}
+  p{margin-bottom:14px;color:var(--text2)}
+  p.lede{font-size:16px;color:var(--text);margin-bottom:26px}
+  ul{margin:0 0 16px 20px;color:var(--text2)}
+  li{margin-bottom:7px}
+  strong{color:var(--text);font-weight:500}
+  /* Wide tables must scroll inside their own box, never the page */
+  .tablebox{overflow-x:auto;margin:20px 0 26px;border:1px solid var(--border);border-radius:8px}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:13px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{font-family:var(--label);font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--tape);background:var(--surface);font-size:13px;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--beam)}
+  .no{color:var(--text3)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;
+    padding:18px 20px;margin:22px 0}
+  .card p:last-child{margin-bottom:0}
+  .cta{display:inline-block;font-family:var(--label);font-weight:700;font-size:16px;
+    letter-spacing:1.6px;text-transform:uppercase;color:var(--bg);background:var(--beam);
+    text-decoration:none;padding:13px 26px;border-radius:8px;margin-top:6px}
+  .cta:hover{background:#22b869}
+  .coffee{display:inline-block;font-family:var(--label);font-weight:600;font-size:14px;
+    letter-spacing:1.5px;text-transform:uppercase;color:var(--kraft);
+    border:1px dashed var(--kraft);border-radius:6px;padding:7px 14px;text-decoration:none}
+  .coffee:hover{background:var(--kraft-dim);color:var(--tape)}
+  footer{margin-top:78px;border-top:1px solid var(--border);padding:28px 0 44px;
+    font-size:12px;color:var(--text3)}
+  footer a{color:var(--text2);text-decoration:none;border-bottom:1px dashed var(--border)}
+  footer a:hover{color:var(--beam)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <a class="wordmark" href="./">Parcel<b>Beam</b></a>
+    <nav>
+      <a href="./#downloads">Downloads</a>
+      <a href="https://buymeacoffee.com/parcelbeam">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Sending files from your phone to your computer</h1>
+  <p class="lede">Every option, honestly compared — including the ones that mean you
+    do not need ParcelBeam at all. If your setup is covered by something built into
+    your operating system, use that. It is free, it is already there, and no download
+    beats no download.</p>
+
+  <h2>The short answer</h2>
+  <div class="tablebox">
+    <table>
+      <thead>
+        <tr><th>Your situation</th><th>Use this</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>iPhone → Mac, both signed into your Apple account</td><td><strong>AirDrop.</strong> It is built in and it works.</td></tr>
+        <tr><td>iPhone → recent Pixel or Galaxy</td><td><strong>AirDrop → Quick Share.</strong> Native since late 2025.</td></tr>
+        <tr><td>Android → Windows</td><td><strong>Quick Share for Windows.</strong> Google's own app.</td></tr>
+        <tr><td>iPhone → Windows, and you don't mind linking accounts</td><td><strong>Phone Link</strong>, if you accept the Microsoft sign-in.</td></tr>
+        <tr><td><strong>iPhone or Android → Linux</strong></td><td>Nothing native exists. ParcelBeam or LocalSend.</td></tr>
+        <tr><td><strong>Any phone → any computer, no accounts at all</strong></td><td>ParcelBeam or LocalSend.</td></tr>
+        <tr><td><strong>A 40 GB video file</strong></td><td>ParcelBeam or LocalSend. Cloud services will make you wait or pay.</td></tr>
+        <tr><td>A device you don't own, or someone else's phone</td><td>ParcelBeam desktop's <strong>Share via link</strong> — a QR code that opens in any browser.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Why this is still annoying in 2026</h2>
+  <p>Every built-in option solves one corner of the problem and stops at the edge of
+    the company that made it. AirDrop is Apple-to-Apple. Quick Share started
+    Android-to-Android. Nearby Sharing, the one actually built into Windows,
+    <strong>does not talk to phones at all</strong> — it is Windows-to-Windows only,
+    which surprises almost everyone who finds it.</p>
+  <p>This got genuinely better recently. Since November 2025, AirDrop and Quick Share
+    can talk to each other, starting with the Pixel 10 and reaching the Pixel 9 and
+    Samsung's Galaxy S26 line during 2026. If you have an iPhone and a recent
+    flagship Android, that gap is closed and you should just use it.</p>
+  <p>What none of them do is the ordinary case of a phone and a <em>desktop computer
+    from a different company</em>. An iPhone and a Linux laptop. An Android and a Mac.
+    An iPhone and a Windows PC where you would rather not sign into anything. That
+    is the gap ParcelBeam exists to fill, and it is the only reason to install it.</p>
+
+  <h2>Option by option</h2>
+
+  <h3>AirDrop</h3>
+  <p>Excellent, and genuinely the best choice when it applies. It is peer-to-peer,
+    fast, needs no accounts between your own devices, and is already on your phone.
+    It only fails once a non-Apple computer is involved — and its new Quick Share
+    bridge currently works in "Everyone for 10 Minutes" mode rather than Contacts
+    Only, which is a small but real papercut.</p>
+
+  <h3>Phone Link / Link to Windows</h3>
+  <p>Microsoft's answer, and it now does handle iPhone-to-PC file transfer. The cost
+    is the setup: you pair the phone to the PC and sign into a Microsoft account, so
+    it is a relationship between two specific devices rather than something that just
+    works on whatever network you happen to be on. Windows only. If you have already
+    paid that setup cost and it works for you, you do not need anything else.</p>
+
+  <h3>Nearby Sharing (Windows)</h3>
+  <p>Worth naming only to save you the search: despite the name, it does not transfer
+    to or from phones. Windows to Windows.</p>
+
+  <h3>Snapdrop and PairDrop</h3>
+  <p>Browser-based, nothing to install, and clever — you open a page on both devices
+    and drag. Genuinely good for a one-off transfer on a computer you don't control.
+    The trade-offs are that a browser tab has to stay open and awake at both ends,
+    large transfers are less reliable than a native app, and it depends on a
+    signalling server being up.</p>
+
+  <h3>Cloud services: WeTransfer, Google Drive, Dropbox, email</h3>
+  <p>These upload your file to a company's servers and then download it again — the
+    long way around for two devices sitting on the same desk. You pay for it in
+    waiting, in size limits, in the file existing on someone else's computer, and
+    sometimes in money. For anything large, this is the worst option and also the
+    most commonly used one.</p>
+
+  <h3>LocalSend</h3>
+  <p>LocalSend is the open-source project that created the protocol ParcelBeam speaks,
+    and it deserves the credit for solving this problem properly. It is free, open
+    source, actively maintained, on every platform, and if you want to read the source
+    of the software handling your files, <strong>you should use LocalSend rather than
+    ParcelBeam</strong> — that is a real advantage and closed-source ParcelBeam cannot
+    match it.</p>
+  <p>ParcelBeam is an independent client of the same protocol, built because I wanted
+    a more polished desktop app and a native iPhone app for my own use. The two
+    interoperate: you can run ParcelBeam on your laptop and LocalSend on your phone,
+    or any mix, and they will find each other. This is not a competitor trying to
+    replace LocalSend — it is a different client for people who want a different feel.</p>
+
+  <h2>Where ParcelBeam actually differs</h2>
+  <div class="tablebox">
+    <table>
+      <thead>
+        <tr>
+          <th>&nbsp;</th><th>ParcelBeam</th><th>AirDrop</th><th>Phone Link</th><th>Cloud upload</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Works with Windows</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Works with Linux</td><td class="yes">Yes</td><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Works with Android</td><td class="yes">Yes</td><td>Recent flagships</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>No account or sign-in</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">Microsoft account</td><td class="no">Account required</td></tr>
+        <tr><td>No size limit</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">Usually capped</td></tr>
+        <tr><td>Files never leave your network</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td></tr>
+        <tr><td>Works with no internet at all</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Partly</td><td class="no">No</td></tr>
+        <tr><td>Open source</td><td class="no">No — use LocalSend</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Common questions</h2>
+
+  <h3>Is there an AirDrop for Windows?</h3>
+  <p>Not built in. Nearby Sharing is Windows-to-Windows, and Phone Link needs account
+    pairing. ParcelBeam and LocalSend are the closest equivalents that work the way
+    AirDrop does — open the app, see the device, send.</p>
+
+  <h3>How do I send a large video from iPhone to a PC?</h3>
+  <p>Over the local network, not the cloud. A phone and a computer on the same Wi-Fi
+    can move a multi-gigabyte file directly at network speed, and neither ParcelBeam
+    nor LocalSend imposes a size cap. Uploading the same file to a cloud service means
+    sending it out to a data centre and pulling it back down again.</p>
+
+  <h3>Can my iPhone receive files while the app is closed?</h3>
+  <p>No, and be sceptical of anything claiming otherwise. iOS suspends apps in the
+    background, so the app must be open to be discoverable. This is an iOS limitation
+    that applies to every app of this kind. For sending to a phone with nothing
+    installed, use ParcelBeam desktop's Share via link, which shows a QR code that
+    opens in any browser.</p>
+
+  <h3>Do I need both devices on the same Wi-Fi?</h3>
+  <p>Yes. That is the whole idea — the file goes directly between the two devices.
+    Guest networks and networks with client isolation will block this, and no app can
+    work around that.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">Try it</h3>
+    <p>Free for macOS, Windows and Linux. No account, no ads, no tracking, and no
+      nagging. If it saves you time, a coffee keeps it going.</p>
+    <p>
+      <a class="cta" href="./#downloads">Download ParcelBeam</a>
+      &nbsp;
+      <a class="coffee" href="https://buymeacoffee.com/parcelbeam">☕ Buy me a coffee</a>
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Adrian Nicolaysen · <a href="./">ParcelBeam</a> ·
+    <a href="./privacy.html">Privacy</a> ·
+    <a href="https://github.com/zoco94/parcelbeam-releases/releases">All releases</a><br>
+    ParcelBeam is an independent app and is not affiliated with the LocalSend project,
+    Apple, Google or Microsoft. AirDrop is a trademark of Apple Inc.
+  </div>
+</footer>
+
+</body>
+</html>
