@@ -23,9 +23,9 @@ protocol, so everything talks to everything.
 
 ---
 
-## ParcelBeam for iPhone — coming soon
+## ParcelBeam for iPhone
 
-A native iOS companion is in TestFlight now and heading for the App Store. Any
+[On the App Store](https://apps.apple.com/us/app/parcelbeam/id6797666367) as 1.0 (20). Any
 LocalSend-compatible app will move files to and from your desktop, but the
 ParcelBeam app is built for it:
 
@@ -45,8 +45,7 @@ ParcelBeam app is built for it:
   <img src="screenshots/4-settings.png"   width="215" alt="PIN, quick save, photo library and feedback settings">
 </p>
 
-*Not yet publicly downloadable — this section will link to the App Store when
-it ships.*
+[Get ParcelBeam for iPhone](https://apps.apple.com/us/app/parcelbeam/id6797666367)
 
 ## Works with LocalSend
 
