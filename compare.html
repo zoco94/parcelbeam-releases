@@ -102,9 +102,9 @@
         <tr><td>iPhone → recent Pixel or Galaxy</td><td><strong>AirDrop → Quick Share.</strong> Native since late 2025.</td></tr>
         <tr><td>Android → Windows</td><td><strong>Quick Share for Windows.</strong> Google's own app.</td></tr>
         <tr><td>iPhone → Windows, and you don't mind linking accounts</td><td><strong>Phone Link</strong>, if you accept the Microsoft sign-in.</td></tr>
-        <tr><td><strong>iPhone or Android → Linux</strong></td><td>Nothing native exists. ParcelBeam or LocalSend.</td></tr>
-        <tr><td><strong>Any phone → any computer, no accounts at all</strong></td><td>ParcelBeam or LocalSend.</td></tr>
-        <tr><td><strong>A 40 GB video file</strong></td><td>ParcelBeam or LocalSend. Cloud services will make you wait or pay.</td></tr>
+        <tr><td><strong>iPhone or Android → Linux</strong></td><td>Nothing native exists. ParcelBeam.</td></tr>
+        <tr><td><strong>Any phone → any computer, no accounts at all</strong></td><td>ParcelBeam.</td></tr>
+        <tr><td><strong>A 40 GB video file</strong></td><td>ParcelBeam. Cloud services will make you wait or pay.</td></tr>
         <tr><td>A device you don't own, or someone else's phone</td><td>ParcelBeam desktop's <strong>Share via link</strong> — a QR code that opens in any browser.</td></tr>
       </tbody>
     </table>
@@ -159,19 +159,6 @@
     sometimes in money. For anything large, this is the worst option and also the
     most commonly used one.</p>
 
-  <h3>LocalSend</h3>
-  <p>LocalSend is the open-source project that created the protocol ParcelBeam speaks,
-    and it deserves the credit for solving this problem properly. It is free, open
-    source, actively maintained, on every platform, and if you want to read the source
-    of the software handling your files, <strong>you should use LocalSend rather than
-    ParcelBeam</strong> — that is a real advantage and closed-source ParcelBeam cannot
-    match it.</p>
-  <p>ParcelBeam is an independent client of the same protocol, built because I wanted
-    a more polished desktop app and a native iPhone app for my own use. The two
-    interoperate: you can run ParcelBeam on your laptop and LocalSend on your phone,
-    or any mix, and they will find each other. This is not a competitor trying to
-    replace LocalSend — it is a different client for people who want a different feel.</p>
-
   <h2>Where ParcelBeam actually differs</h2>
   <div class="tablebox">
     <table>
@@ -188,7 +175,7 @@
         <tr><td>No size limit</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">Usually capped</td></tr>
         <tr><td>Files never leave your network</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td></tr>
         <tr><td>Works with no internet at all</td><td class="yes">Yes</td><td class="yes">Yes</td><td>Partly</td><td class="no">No</td></tr>
-        <tr><td>Open source</td><td class="no">No — use LocalSend</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+        <tr><td>Open source</td><td class="no">No</td><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
       </tbody>
     </table>
   </div>
@@ -197,13 +184,13 @@
 
   <h3>Is there an AirDrop for Windows?</h3>
   <p>Not built in. Nearby Sharing is Windows-to-Windows, and Phone Link needs account
-    pairing. ParcelBeam and LocalSend are the closest equivalents that work the way
+    pairing. ParcelBeam is the closest equivalent that works the way
     AirDrop does — open the app, see the device, send.</p>
 
   <h3>How do I send a large video from iPhone to a PC?</h3>
   <p>Over the local network, not the cloud. A phone and a computer on the same Wi-Fi
-    can move a multi-gigabyte file directly at network speed, and neither ParcelBeam
-    nor LocalSend imposes a size cap. Uploading the same file to a cloud service means
+    can move a multi-gigabyte file directly at network speed, and ParcelBeam
+    imposes no size cap. Uploading the same file to a cloud service means
     sending it out to a data centre and pulling it back down again.</p>
 
   <h3>Can my iPhone receive files while the app is closed?</h3>
@@ -236,8 +223,7 @@
     © 2026 Adrian Nicolaysen · <a href="./">ParcelBeam</a> ·
     <a href="./privacy.html">Privacy</a> ·
     <a href="https://github.com/zoco94/parcelbeam-releases/releases">All releases</a><br>
-    ParcelBeam is an independent app and is not affiliated with the LocalSend project,
-    Apple, Google or Microsoft. AirDrop is a trademark of Apple Inc.
+    AirDrop is a trademark of Apple Inc.
   </div>
 </footer>
 

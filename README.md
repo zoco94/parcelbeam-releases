@@ -13,9 +13,9 @@ leave your network.
 | **Android** | ✓ | ✓ | ✓ | ✓ | ✓ |
 | **iPhone** | ✓ | ✓ | ✓ | ✓ | ✓ |
 
-Desktop platforms run the ParcelBeam app; phones run ParcelBeam for iPhone or
-the free [LocalSend](https://localsend.org) app — all of them speak the same
-protocol, so everything talks to everything.
+Desktop platforms run the ParcelBeam app; phones run ParcelBeam for iPhone.
+Both speak the same open local-network protocol, so they find each other on
+your Wi-Fi.
 
 ### [⬇ Download for macOS, Windows or Linux](https://zoco94.github.io/parcelbeam-releases/)
 
@@ -25,9 +25,8 @@ protocol, so everything talks to everything.
 
 ## ParcelBeam for iPhone
 
-[On the App Store](https://apps.apple.com/us/app/parcelbeam/id6797666367) as 1.0 (20). Any
-LocalSend-compatible app will move files to and from your desktop, but the
-ParcelBeam app is built for it:
+[On the App Store](https://apps.apple.com/us/app/parcelbeam/id6797666367) as 1.0 (20).
+The iPhone app is built for the same network as the desktop:
 
 - **Send from anywhere** — "ParcelBeam" in the iOS share sheet, straight from
   Photos, Files or Safari.
@@ -46,19 +45,6 @@ ParcelBeam app is built for it:
 </p>
 
 [Get ParcelBeam for iPhone](https://apps.apple.com/us/app/parcelbeam/id6797666367)
-
-## Works with LocalSend
-
-ParcelBeam speaks **LocalSend Protocol v2.1**, so it transfers to and from the
-free [LocalSend](https://localsend.org) apps on **Android, iOS, Windows, macOS
-and Linux** — as well as any other client that implements the protocol.
-
-That means your phone is already covered: install LocalSend from your app store
-and it will find ParcelBeam on your desktop straight away, in both directions.
-
-> ParcelBeam is an independent application. It is not affiliated with,
-> endorsed by, or derived from the LocalSend project — it is a separate
-> implementation of the same open protocol.
 
 ## What it does
 
